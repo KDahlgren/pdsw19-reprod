@@ -11,6 +11,7 @@ if [[ "$HOSTNAME" == "client0"* ]]; then
   cd ~ ;
   git clone https://github.com/KDahlgren/skyhook-ansible.git ;
   cd skyhook-ansible ;
+  git checkout pdsw19 ;
   git submodule update --init ;
   sudo apt-get install dstat;
   yes | sudo apt-get install x11-apps;
