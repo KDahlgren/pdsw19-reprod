@@ -13,6 +13,6 @@ if [[ "$HOSTNAME" == "client0"* ]]; then
   cd skyhook-ansible ;
   git submodule update --init ;
   sudo apt-get install dstat;
-  sudo apt-get install x11-apps;
+  yes | sudo apt-get install x11-apps;
   sudo apt-get install scite;
 fi
