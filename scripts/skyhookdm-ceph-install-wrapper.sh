@@ -30,10 +30,10 @@ ansible_dir="${HOME}/skyhook-ansible/ansible/"
 echo "clear out prev data dirs and scripts."
 scripts_dir="${HOME}/pdsw19-reprod/scripts/"
 data_dir="${HOME}/pdsw19-reprod/data/"
-rm -rf $scripts_dir/
-rm -rf $data_dir/
-mkdir -p $scripts_dir
-mkdir -p $data_dir
+#rm -rf $scripts_dir/
+#rm -rf $data_dir/
+#mkdir -p $scripts_dir
+#mkdir -p $data_dir
 touch nodes.txt
 rm nodes.txt
 touch postreqs.sh
