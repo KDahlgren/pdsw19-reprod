@@ -17,3 +17,5 @@ if [[ "$HOSTNAME" == "client0"* ]]; then
   yes | sudo apt-get install x11-apps;
   sudo apt-get install scite;
 fi
+
+
