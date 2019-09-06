@@ -171,13 +171,15 @@ sleep 2s;
 ###MAKE SKYHOOK SPECIFIC BINARIES BEFORE INSTALLING VANILLA CEPH LUMINOUS
 #~ echo "Client0: apt-get update, install basic stuff, clone skyhookdm-ceph...";
 #~ if test -s $repo_dir/skyhookdm-ceph/README; then echo "removing ${repo_dir}/skyhookdm-ceph"; sudo rm -rf $repo_dir/skyhookdm-ceph/; fi
-echo "Client0: building skyhook specific binaries:  ./do_cmake.sh; make -j36  ceph-osd librados cls_tabular run-query fbwriter...";
+echo "Client0: building skyhook specific binaries:  ./do_cmake.sh; make -j36 cls_tabular run-query fbwriter...";
+echo `date`;
 cd $repo_dir/skyhookdm-ceph;
 git checkout $pdsw_branch;
 export DEBIAN_FRONTEND="noninteractive";
 ./do_cmake.sh;
 cd build;
-make -j36  ceph-osd librados cls_tabular run-query fbwriter;
+# make -j36  ceph-osd librados cls_tabular run-query fbwriter;
+make -j36 cls_tabular run-query fbwriter;
 
 
 
@@ -252,7 +254,7 @@ mv fbmeta.Skyhook.v2.SFT_FLATBUF_FLEX_ROW.lineitem.0.1-1 "fbx.${lineitem_100MB_o
 ncols100_10MB_objfilename_base="ncols100.10MB.25Krows.obj.0";
 ncols100_100MB_objfilename_base="ncols100.100MB.250Krows.obj.0";
 ncols100_25Kcsv="ncols100.10MB.objs.25Krows.csv";
-ncols100_25Kcsv="ncols100.100MB.objs.250Krows.csv";
+ncols100_250Kcsv="ncols100.100MB.objs.250Krows.csv";
 touch $ncols100_250Kcsv;
 echo "nocls100: generating 250K rows csv by 10x concat of our 25K row csv..."
 for ((i = 0 ; i < 10 ; i++)); do
