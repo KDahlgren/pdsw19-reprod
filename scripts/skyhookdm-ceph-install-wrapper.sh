@@ -18,14 +18,18 @@ max_osd=$((nosds-1))
 echo "START:"
 echo `date`
 
+cd $HOME
+# get all the scripts and sample data from public repo.
+echo "assumes you are at home dir ${HOME} and have done this: git clone https://github.com/KDahlgren/pdsw19-reprod, else cancel now and pleasedo that."
+sleep 5s
 
 # hardcoded vars for now.
 pdsw_branch="skyhook-luminous";
 repo_dir="/mnt/sda4/"
 ansible_dir="${HOME}/skyhook-ansible/ansible/"
 echo "clear out prev data dirs and scripts."
-scripts_dir="${HOME}/scripts/"
-data_dir="${HOME}/data/"
+scripts_dir="${HOME}/pdsw19-reprod/scripts/"
+data_dir="${HOME}/pdsw19-reprod/data/"
 rm -rf $scripts_dir/
 rm -rf $data_dir/
 mkdir -p $scripts_dir
