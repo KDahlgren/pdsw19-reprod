@@ -1,6 +1,9 @@
 #!/bin/bash
 # set  -e
 
+# -------------------------------------------------------------------- #
+# SETUP AND INSTALL CEPH
+# -------------------------------------------------------------------- #
 if [ $# -le 1 ]
 then
   echo "Usage:"
@@ -68,9 +71,12 @@ bash postreqs.sh;
 
 echo "specify correct num osds for this cluster in ansible hosts file";
 cd $HOME
+head -n 4 $ansible_dir/hosts >> $ansible_dir/tmp.yml;
 for ((i = 0 ; i < $nosds ; i++)); do
-  echo "osd${i}" >> $ansible_dir/hosts;
+  echo "osd${i}" >> $ansible_dir/tmp.yml;
 done;
+mv $ansible_dir/tmp.yml $ansible_dir/hosts;
+rm -rf $ansible_dir/tmp.yml ;
 cp $ansible_dir/hosts $ansible_dir/lib/ceph-deploy-ansible/ansible/hosts;
 
 echo "VERIFY osds all there"
@@ -97,3 +103,31 @@ cd $ansible_dir;
 time ansible-playbook transforms_setup_playbook.yml ;
 echo `date`;
 echo "ansible playbook done.";
+sleep 10s;
+
+# -------------------------------------------------------------------- #
+# COMPILE BINARIES FOR TRANSFORM TESTS
+# -------------------------------------------------------------------- #
+cd /mnt/sda4/skyhookdm-ceph/build ;
+cp ${HOME}/pdsw19-reprod/data/* . ;
+make -j36 fbwriter run-query run-copyfrom-merge run-client-merge ;
+
+# -------------------------------------------------------------------- #
+# WRITE 10MB OBJECT FILES
+# -------------------------------------------------------------------- #
+bin/fbwriter --file_name ncols100.10MB.objs.25Krows.csv --schema_file_name ncols100.schema.txt --num_objs 1 --flush_rows 25000 --read_rows 25000 --csv_delim "|" --use_hashing false --rid_start_value 1 --table_name ncols100_10MB --input_oid 0 --obj_type SFT_FLATBUF_FLEX_ROW ;
+
+bin/fbwriter --file_name lineitem.10MB.objs.75Krows.csv --schema_file_name lineitem.schema.txt --num_objs 1 --flush_rows 75000 --read_rows 75000 --csv_delim "|" --use_hashing false --rid_start_value 1 --table_name lineitem_10MB --input_oid 0 --obj_type SFT_FLATBUF_FLEX_ROW ;
+
+# -------------------------------------------------------------------- #
+# WRITE 100MB OBJECT FILES
+# -------------------------------------------------------------------- #
+for ((i = 0 ; i < 10 ; i++)); do
+  cat ncols100.10MB.objs.25Krows.csv >> ncols100.100MB.objs.250Krows.csv ;
+done;
+bin/fbwriter --file_name ncols100.100MB.objs.250Krows.csv --schema_file_name ncols100.schema.txt --num_objs 1 --flush_rows 250000 --read_rows 250000 --csv_delim "|" --use_hashing false --rid_start_value 1 --table_name ncols100_100MB --input_oid 0 --obj_type SFT_FLATBUF_FLEX_ROW ;
+
+for ((i = 0 ; i < 10 ; i++)); do
+  cat lineitem.10MB.objs.75Krows.csv >> lineitem.100MB.objs.750Krows.csv ;
+done;
+bin/fbwriter --file_name lineitem.100MB.objs.750Krows.csv --schema_file_name lineitem.schema.txt --num_objs 1 --flush_rows 750000 --read_rows 750000 --csv_delim "|" --use_hashing false --rid_start_value 1 --table_name lineitem_100MB --input_oid 0 --obj_type SFT_FLATBUF_FLEX_ROW ;
