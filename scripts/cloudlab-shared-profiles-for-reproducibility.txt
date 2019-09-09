@@ -14,7 +14,8 @@
 6. ./create-objs.sh
 7. ./bash load-wrapper-10MB.sh <nosds> <nobjects>
 8. ./runquery-A.sh, run-query-B.sh
-
+ex: bash run_query_test.sh  -n <numobjs> -p <poolname> -r <numruns-to-average> -o <numosds>  -s <schemaname, i.e. "lineitem" or ncols100">
+jlefevre@client0:/mnt/sda4/skyhookdm-ceph/build$ bash  run_query_test.sh  -n 10000 -p lineitem.10MB.fbx -r 3 -o 8  -s "lineitem" | tee  runquery.8osds.lineitem.10MB.client0.log
 
 # OUR CLOUDLAB PROFILES SHARED PUBLICLY for 1,2,4,8,16,32 node clusters.
 1client-1osd: c220g5-01osds
