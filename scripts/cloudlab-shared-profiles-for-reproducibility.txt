@@ -17,7 +17,14 @@
 8. cd /mnt/sda4/skyhookdm-ceph/build
 9. # run a query on an 8 node cluster for the specified pool
 # run_query_test_lineitem.sh  -n <numobjs> -p <poolname> -r <numruns-to-average> -o <numosds>  -s <schemaname, i.e. "lineitem" or ncols100">
-./run_query_test_lineitem.sh  -n 10000 -p lineitem.10MB.fbx -r 3 -o 8  -s "lineitem" | tee  runquery.8osds.lineitem.10MB.client0.log
+
+# LINEITEM DATASET QUERIES
+./run_query_test_lineitem.sh  -n 10000 -p lineitem.10MB.fbx   -r 3 -o 8  -s "lineitem" | tee  runquery.8osds.lineitem.10MB.fbxclient0.log
+./run_query_test_lineitem.sh  -n 10000 -p lineitem.10MB.arrow -r 3 -o 8  -s "lineitem" | tee  runquery.8osds.lineitem.10MB.arrow.client0.log
+
+#NCOLS100 DATASET QUERIES
+./run_query_test_ncols100.sh  -n 10000 -p lineitem.10MB.fbx   -r 3 -o 8  -s "ncols100" | tee  runquery.8osds.ncols100.10MB.fbxclient0.log
+./run_query_test_ncols100.sh  -n 10000 -p lineitem.10MB.arrow -r 3 -o 8  -s "ncols100" | tee  runquery.8osds.ncols100.10MB.arrow.client0.log
 
 
 # OUR CLOUDLAB PROFILES SHARED PUBLICLY for 1,2,4,8,16,32 node clusters.
