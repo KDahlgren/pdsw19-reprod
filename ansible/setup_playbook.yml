@@ -1,0 +1,12 @@
+---
+- hosts: clients
+  gather_facts: no
+  vars_files:
+    - "{{ vars_file }}"
+  tasks:
+    - name: "running install"
+      shell: |
+        git clone https://github.com/KDahlgren/pdsw19-reprod.git ;
+        time bash transforms.sh {{ numosds }} ;
+      register: shell_output
+    - debug: var=shell_output.stdout_lines
