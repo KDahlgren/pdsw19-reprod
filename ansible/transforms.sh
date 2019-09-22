@@ -26,20 +26,23 @@ rm nodes.txt
 touch postreqs.sh
 rm postreqs.sh
 
-#echo "create nodes.txt file for ssh key copy/setup"
-#cd $HOME
-#echo "client0" > nodes.txt;
-#for ((i = 0 ; i < $nosds ; i++)); do
-#  echo "osd${i}" >> nodes.txt;
-#done;
-#
-#echo "copy scripts to all nodes"
-#cd $HOME
-#for n in  `cat nodes.txt`; do
-#  echo "copy scripts dir to node ${n}";
-#  scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${n}:~/ ;
-#done;
-#
+echo "create nodes.txt file for ssh key copy/setup"
+cd $HOME
+echo "client0" > nodes.txt;
+for ((i = 0 ; i < $nosds ; i++)); do
+  echo "osd${i}" >> nodes.txt;
+done;
+
+echo "nodes.txt:"
+cat nodes.txt
+
+echo "copy scripts to all nodes"
+cd $HOME
+for n in  `cat nodes.txt`; do
+  echo "copy scripts dir to node ${n}";
+  scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${n}:~/ ;
+done;
+
 #echo "setup ansible prereqs via script, and install other small stuff locally...";
 #bash postreqs.sh;
 #

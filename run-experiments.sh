@@ -24,6 +24,8 @@ END
 #cp ${reprod_dir}/geni/hosts_4 ${reprod_dir}/geni/hosts ;
 #cp ${reprod_dir}/geni/request.py_4 ${reprod_dir}/geni/request.py ;
 #cp ${reprod_dir}/ansible/transforms_4osds.yml ${reprod_dir}/ansible/extra-vars.yml ;
+
+cp ${reprod_dir}/geni/request.py_1 ${reprod_dir}/geni/request.py ;
 cp ${reprod_dir}/ansible/transforms_1osd.yml ${reprod_dir}/ansible/extra-vars.yml ;
 
 # ----------------------------------------- #
