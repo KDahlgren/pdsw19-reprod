@@ -1,12 +1,30 @@
 #!/bin/bash
 # set  -e
 
-echo "copy scripts to all nodes"
-cd $HOME
-for n in  `cat nodes.txt`; do
-  echo "copy scripts dir to node ${n}";
-  scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${n}:~/ ;
-done;
+username=$1
+ansible_dir="${HOME}/skyhook-ansible/ansible/"
+scripts_dir="${HOME}/pdsw19-reprod/scripts/"
+data_dir="${HOME}/pdsw19-reprod/data/"
+reprod_dir="${HOME}/pdsw19-reprod/"
+
+python - << END
+import os
+addrs = []
+print "copy scripts to all nodes"
+with open('nodes.txt','r') as f :
+  for line in f :
+    line = line.rstrip()
+    if not line : continue
+    line = line.split()
+    addr = line[1]
+    addr = addr.split("=")
+    addr = addr[1]
+    addrs.append( addr )
+
+for i in range( 0, len( addrs ) ) :
+  python "copy scripts dir to node " + i
+  os.system( "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;" )
+END
 
 #echo "setup ansible prereqs via script, and install other small stuff locally...";
 #bash postreqs.sh;

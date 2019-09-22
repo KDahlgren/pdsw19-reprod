@@ -40,6 +40,13 @@
         cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
         time bash transforms.sh {{ numosds }} ;
+      register: shell_output
+    - debug: var=shell_output.stdout_lines
+
+    - name: "running install 2"
+      shell: |
+        cd ${HOME}/pdsw19-reprod/ansible ;
+        ls ;
         time bash transforms.sh_tmp {{ numosds }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines
