@@ -28,8 +28,8 @@ action "run test" {
   needs = "request resources"
   uses = "popperized/ansible@master"
   args = [
-    "-i", "geni/hosts",
-    "--extra-vars", "\"vars_file=ansible/transforms_4osds.yml\"",
+    "-i", "geni/hosts.ini",
+    #"-i", "ansible/hosts",
     "ansible/setup_playbook.yml"
   ]
   env = {

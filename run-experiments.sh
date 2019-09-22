@@ -20,9 +20,11 @@ END
 # ----------------------------------------- #
 # SETUP 4OSDs
 # ----------------------------------------- #
-cp ${reprod_dir}/geni/hosts.ini_4 ${reprod_dir}/geni/hosts.ini ;
-cp ${reprod_dir}/geni/hosts_4 ${reprod_dir}/geni/hosts ;
-cp ${reprod_dir}/geni/request.py_4 ${reprod_dir}/geni/request.py ;
+#cp ${reprod_dir}/geni/hosts.ini_4 ${reprod_dir}/geni/hosts.ini ;
+#cp ${reprod_dir}/geni/hosts_4 ${reprod_dir}/geni/hosts ;
+#cp ${reprod_dir}/geni/request.py_4 ${reprod_dir}/geni/request.py ;
+#cp ${reprod_dir}/ansible/transforms_4osds.yml ${reprod_dir}/ansible/extra-vars.yml ;
+cp ${reprod_dir}/ansible/transforms_1osd.yml ${reprod_dir}/ansible/extra-vars.yml ;
 
 # ----------------------------------------- #
 # RUN POPPER -- 4OSDs
@@ -39,9 +41,10 @@ echo "popper_start=$popper_start popper_end=$popper_end popper_duration=$popper_
 # ----------------------------------------- #
 # SETUP 8OSDs
 # ----------------------------------------- #
-cp ${reprod_dir}/geni/hosts.ini_8 ${reprod_dir}/geni/hosts.ini ;
-cp ${reprod_dir}/geni/hosts_8 ${reprod_dir}/geni/hosts ;
-cp ${reprod_dir}/geni/request.py_8 ${reprod_dir}/geni/request.py ;
+#cp ${reprod_dir}/geni/hosts.ini_8 ${reprod_dir}/geni/hosts.ini ;
+#cp ${reprod_dir}/geni/hosts_8 ${reprod_dir}/geni/hosts ;
+#cp ${reprod_dir}/geni/request.py_8 ${reprod_dir}/geni/request.py ;
+#cp ${reprod_dir}/ansible/transforms_8osds.yml ${reprod_dir}/ansible/extra-vars.yml ;
 
 # ----------------------------------------- #
 # RUN POPPER -- 8OSDs

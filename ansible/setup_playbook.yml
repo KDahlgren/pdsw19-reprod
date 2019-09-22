@@ -1,15 +1,44 @@
 ---
 - hosts: clients
+  become: true
   gather_facts: no
   vars_files:
-    - "{{ vars_file }}"
+    - extra-vars.yml
   tasks:
-    - name: "running install"
+    - name: "clone pdsw19-repod on client0"
       shell: |
+        echo "numosds: {{ numosds }}"
         cd ${HOME} ;
+        if test -d pdsw19-reprod/ ; then sudo rm -rf pdsw19-reprod/ ; fi ;
         git clone https://github.com/KDahlgren/pdsw19-reprod.git ;
         cd pdsw19-reprod ;
         git checkout popperized ;
-        time bash ansible/transforms.sh {{ numosds }} ;
+      register: shell_output
+    - debug: var=shell_output.stdout_lines
+
+    - name: "clone skyhook-ansible on client0"
+      shell: |
+        echo "numosds: {{ numosds }}"
+        cd ${HOME} ;
+        if test -d skyhook-ansible/ ; then sudo rm -rf skyhook-ansible/ ; fi ;
+        git clone https://github.com/KDahlgren/skyhook-ansible.git ;
+        cd skyhook-ansible ;
+      register: shell_output
+    - debug: var=shell_output.stdout_lines
+
+    - name: "running install 1"
+      shell: |
+        echo "numosds1: {{ numosds }}"
+        cd ${HOME} ;
+        cp "${HOME}/pdsw19-reprod/geni/hosts_{{ numosds }}" ${HOME}/skyhook-ansible/ansible/hosts ;
+        cat ${HOME}/skyhook-ansible/ansible/hosts ;
+      register: shell_output
+    - debug: var=shell_output.stdout_lines
+
+    - name: "running install 2"
+      shell: |
+        cd ${HOME}/pdsw19-reprod/ansible ;
+        ls ;
+        time bash transforms.sh {{ numosds }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines
