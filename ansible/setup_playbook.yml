@@ -1,9 +1,12 @@
 ---
 - hosts: clients
-  become: true
+  become: True
   gather_facts: no
   vars_files:
     - extra-vars.yml
+  vars:
+    local_home: "{{ lookup('env','HOME') }}"
+    this_user:  "{{ lookup('env','USER') }}"
   tasks:
     - name: "clone pdsw19-repod on client0"
       shell: |
@@ -47,6 +50,6 @@
       shell: |
         cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
-        time bash transforms.sh_tmp {{ numosds }} ;
+        time bash transforms.sh_tmp {{ this_user }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines

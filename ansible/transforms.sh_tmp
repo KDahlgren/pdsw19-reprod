@@ -21,9 +21,14 @@ with open('nodes.txt','r') as f :
     addr = addr[1]
     addrs.append( addr )
 
-for i in range( 0, len( addrs ) ) :
-  python "copy scripts dir to node " + i
-  os.system( "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;" )
+cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;"
+
+print cmd
+print addrs
+
+#for i in range( 0, len( addrs ) ) :
+#  python "copy scripts dir to node " + i
+#  os.system( cmd )
 END
 
 #echo "setup ansible prereqs via script, and install other small stuff locally...";
