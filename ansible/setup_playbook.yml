@@ -6,7 +6,10 @@
   tasks:
     - name: "running install"
       shell: |
+        cd ${HOME} ;
         git clone https://github.com/KDahlgren/pdsw19-reprod.git ;
-        time bash transforms.sh {{ numosds }} ;
+        cd pdsw19-reprod ;
+        git checkout popperized ;
+        time bash ansible/transforms.sh {{ numosds }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines

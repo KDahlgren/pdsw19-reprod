@@ -36,7 +36,7 @@ echo "copy scripts to all nodes"
 cd $HOME
 for n in  `cat nodes.txt`; do
   echo "copy scripts dir to node ${n}";
-  scp -r ${scripts_dir}/*  ${n}:~/ ;
+  scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${n}:~/ ;
 done;
 
 echo "setup ansible prereqs via script, and install other small stuff locally...";
@@ -65,7 +65,7 @@ echo "visually  verify all sda4 mounted at /mnt/sda4.";
 cd $HOME
 for n in `cat nodes.txt`; do
   echo $n
-  ssh $n "df -h | grep sda4;";
+  ssh -o StrictHostKeyChecking=no $n "df -h | grep sda4;";
 done;
 sleep 3s;
 
