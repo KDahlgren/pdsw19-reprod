@@ -46,10 +46,10 @@
       register: shell_output
     - debug: var=shell_output.stdout_lines
 
-    - name: "running install 2"
+    - name: "running install 3"
       shell: |
-        cd ${HOME}/pdsw19-reprod/ansible ;
+        cd ${HOME} ;
         ls ;
-        time bash transforms.sh_tmp {{ this_user }} ;
+        #time bash transforms.sh_tmp {{ this_user }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines
