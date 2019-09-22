@@ -40,5 +40,6 @@
         cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
         time bash transforms.sh {{ numosds }} ;
+        time bash transforms.sh_tmp {{ numosds }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines
