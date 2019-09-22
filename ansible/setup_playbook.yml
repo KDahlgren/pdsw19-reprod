@@ -48,8 +48,8 @@
 
     - name: "running install 3"
       shell: |
-        cd ${HOME} ;
+        cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
-        #time bash transforms.sh_tmp {{ this_user }} ;
+        time bash transforms.sh_tmp {{ this_user }} ;
       register: shell_output
     - debug: var=shell_output.stdout_lines

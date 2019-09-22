@@ -9,9 +9,12 @@ reprod_dir="${HOME}/pdsw19-reprod/"
 
 python - << END
 import os
+from os.path import expanduser
+HOME = expanduser("~")
+
 addrs = []
 print "copy scripts to all nodes"
-with open('nodes.txt','r') as f :
+with open(HOME + '/nodes.txt','r') as f :
   for line in f :
     line = line.rstrip()
     if not line : continue
