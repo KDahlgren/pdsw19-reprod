@@ -23,24 +23,28 @@ with open( "hosts", "r" ) as f :
       addr = line[1]
       addr = addr.split( "=" )
       addr = addr[1]
+      print "addr = " + addr
 
       # get the ssh username
       user = line[2]
       user = user.split( "=" )
       user = user[2]
+      print "user = " + user
 
-      ssh_info.append( ( user, addr ) )
+      this_pair = ( user, addr )
+      print "this_pair = " + this_pair
+      ssh_info.append( this_pair )
 
     except IndexError as e :
       continue
 
-print ssh_info
+print "ssh_info : " + str(ssh_info)
 for i in range( 0, len( ssh_info ) ) :
   this_ssh  = ssh_info[i]
   this_user = this_ssh[0]
   this_addr = this_ssh[1]
   cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  " + this_user + "@" + this_addr + ":~/ ;"
-  print cmd
+  print "cmd = " + cmd
 
 #for i in range( 0, len( ssh_info ) ) :
 #  python "copy scripts dir to node " + i
