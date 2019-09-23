@@ -28,9 +28,9 @@ with open( "hosts", "r" ) as f :
       continue
 
 print addrs
-#for i in range( 0, len( addrs ) ) :
-#  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;"
-#  print cmd
+for i in range( 0, len( addrs ) ) :
+  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;"
+  print cmd
 
 #for i in range( 0, len( addrs ) ) :
 #  python "copy scripts dir to node " + i
