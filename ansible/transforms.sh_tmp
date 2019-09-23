@@ -1,7 +1,6 @@
 #!/bin/bash
 # set  -e
 
-username=$1
 ansible_dir="${HOME}/skyhook-ansible/ansible/"
 scripts_dir="${HOME}/pdsw19-reprod/scripts/"
 data_dir="${HOME}/pdsw19-reprod/data/"
@@ -11,7 +10,7 @@ cd $ansible_dir ;
 python - << END
 import os
 
-addrs = []
+ssh_info = []
 print "copy scripts to all nodes"
 with open( "hosts", "r" ) as f :
   for line in f :
@@ -20,16 +19,27 @@ with open( "hosts", "r" ) as f :
     line = line.split()
 
     try :
+      # get the ssh address
       addr = line[1]
       addr = addr.split( "=" )
       addr = addr[1]
-      addrs.append( addr )
+
+      # get the ssh username
+      user = line[2]
+      user = user.split( "=" )
+      user = user[2]
+
+      ssh_info.append( ( user, addr ) )
+
     except IndexError as e :
       continue
 
 print addrs
-for i in range( 0, len( addrs ) ) :
-  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + addrs[i] + ":~/ ;"
+for i in range( 0, len( ssh_info ) ) :
+  this_ssh  = ssh_info[i]
+  this_user = this_ssh[0]
+  this_addr = this_ssh[1]
+  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  " + this_user + "@" + this_addr + ":~/ ;"
   print cmd
 
 #for i in range( 0, len( addrs ) ) :
