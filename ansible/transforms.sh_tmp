@@ -47,7 +47,7 @@ for i in range( 0, len( ssh_info ) ) :
   cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  " + this_user + "@" + this_addr + ":~/ ;"
   print "cmd = " + cmd
   print "copy scripts dir to node " + this_addr
-  output = subprocess.check_output( "docker info", shell=True )
+  output = subprocess.check_output( cmd, shell=True )
   print output
 END
 
