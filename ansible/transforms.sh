@@ -25,14 +25,3 @@ touch nodes.txt
 rm nodes.txt
 touch postreqs.sh
 rm postreqs.sh
-
-echo "create nodes.txt file for ssh key copy/setup"
-cd $HOME
-echo "client0" > nodes.txt;
-for ((i = 0 ; i < $nosds ; i++)); do
-  echo "osd${i}" >> nodes.txt;
-done;
-
-echo "nodes.txt:"
-cat nodes.txt
-cat /etc/hosts ;

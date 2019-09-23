@@ -9,25 +9,32 @@ reprod_dir="${HOME}/pdsw19-reprod/"
 
 python - << END
 import os
+Last login: Sun Sep 22 12:33:17 on ttys005
+import os
 from os.path import expanduser
 HOME = expanduser("~")
+HOSTS_PATH = "./nodes.txt"
 
 addrs = []
 print "copy scripts to all nodes"
-with open(HOME + '/nodes.txt','r') as f :
+with open( HOSTS_PATH, "r" ) as f :
   for line in f :
     line = line.rstrip()
     if not line : continue
     line = line.split()
-    addr = line[1]
-    addr = addr.split("=")
-    addr = addr[1]
-    addrs.append( addr )
+
+    try :
+      addr = line[1]
+      addr = addr.split( "=" )
+      addr = addr[1]
+      addrs.append( addr )
+    except IndexError as e :
+      continue
 
 print addrs
-for i in range( 0, len( addrs ) ) :
-  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;"
-  print cmd
+#for i in range( 0, len( addrs ) ) :
+#  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;"
+#  print cmd
 
 #for i in range( 0, len( addrs ) ) :
 #  python "copy scripts dir to node " + i
