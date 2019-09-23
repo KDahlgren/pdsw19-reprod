@@ -13,7 +13,7 @@ Last login: Sun Sep 22 12:33:17 on ttys005
 import os
 from os.path import expanduser
 HOME = expanduser("~")
-HOSTS_PATH = "./nodes.txt"
+HOSTS_PATH = HOME + "/skyhook-ansible/ansible/hosts"
 
 addrs = []
 print "copy scripts to all nodes"
