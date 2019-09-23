@@ -34,7 +34,7 @@ with open( "hosts", "r" ) as f :
     except IndexError as e :
       continue
 
-print addrs
+print ssh_info
 for i in range( 0, len( ssh_info ) ) :
   this_ssh  = ssh_info[i]
   this_user = this_ssh[0]
@@ -42,7 +42,7 @@ for i in range( 0, len( ssh_info ) ) :
   cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  " + this_user + "@" + this_addr + ":~/ ;"
   print cmd
 
-#for i in range( 0, len( addrs ) ) :
+#for i in range( 0, len( ssh_info ) ) :
 #  python "copy scripts dir to node " + i
 #  os.system( cmd )
 END
