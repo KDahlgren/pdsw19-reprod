@@ -10,10 +10,6 @@ reprod_dir="${HOME}/pdsw19-reprod/"
 cd $ansible_dir ;
 python - << END
 import os
-Last login: Sun Sep 22 12:33:17 on ttys005
-import os
-from os.path import expanduser
-HOME = expanduser("~")
 
 addrs = []
 print "copy scripts to all nodes"
