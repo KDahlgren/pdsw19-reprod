@@ -46,7 +46,7 @@
       register: shell_output
     - debug: var=shell_output.stdout_lines
 
-    - name: "run transforms.sh_tmp":
+    - name: "run transforms.sh_tmp"
       shell: |
         cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
