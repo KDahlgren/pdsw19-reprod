@@ -9,6 +9,7 @@ reprod_dir="${HOME}/pdsw19-reprod/"
 cd $ansible_dir ;
 python - << END
 import os
+import subprocess
 
 ssh_info = []
 print "copy scripts to all nodes"
@@ -46,7 +47,8 @@ for i in range( 0, len( ssh_info ) ) :
   cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  " + this_user + "@" + this_addr + ":~/ ;"
   print "cmd = " + cmd
   print "copy scripts dir to node " + this_addr
-  os.system( cmd )
+  output = subprocess.check_output( "docker info", shell=True )
+  print output
 END
 
 #echo "setup ansible prereqs via script, and install other small stuff locally...";
