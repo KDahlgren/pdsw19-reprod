@@ -29,7 +29,7 @@ with open( "hosts", "r" ) as f :
 
 print addrs
 for i in range( 0, len( addrs ) ) :
-  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + i + ":~/ ;"
+  cmd = "scp -o StrictHostKeyChecking=no -r ${scripts_dir}/*  ${username}@" + addrs[i] + ":~/ ;"
   print cmd
 
 #for i in range( 0, len( addrs ) ) :
