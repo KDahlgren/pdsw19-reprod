@@ -7,17 +7,17 @@ scripts_dir="${HOME}/pdsw19-reprod/scripts/"
 data_dir="${HOME}/pdsw19-reprod/data/"
 reprod_dir="${HOME}/pdsw19-reprod/"
 
+cd $ansible_dir ;
 python - << END
 import os
 Last login: Sun Sep 22 12:33:17 on ttys005
 import os
 from os.path import expanduser
 HOME = expanduser("~")
-HOSTS_PATH = HOME + "/skyhook-ansible/ansible/hosts"
 
 addrs = []
 print "copy scripts to all nodes"
-with open( HOSTS_PATH, "r" ) as f :
+with open( "hosts", "r" ) as f :
   for line in f :
     line = line.rstrip()
     if not line : continue
