@@ -28,11 +28,11 @@ with open( "hosts", "r" ) as f :
       # get the ssh username
       user = line[2]
       user = user.split( "=" )
-      user = user[2]
+      user = user[1]
       print "user = " + user
 
       this_pair = ( user, addr )
-      print "this_pair = " + this_pair
+      print "this_pair = " + str( this_pair )
       ssh_info.append( this_pair )
 
     except IndexError as e :

@@ -29,7 +29,7 @@
       register: shell_output
     - debug: var=shell_output.stdout_lines
 
-    - name: "running install 1"
+    - name: "overwrite skyhook-ansible/ansible/hosts"
       shell: |
         echo "numosds1: {{ numosds }}"
         cd ${HOME} ;
@@ -38,7 +38,7 @@
       register: shell_output
     - debug: var=shell_output.stdout_lines
 
-    - name: "running install 2"
+    - name: "run transforms.sh"
       shell: |
         cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
@@ -46,10 +46,10 @@
       register: shell_output
     - debug: var=shell_output.stdout_lines
 
-    - name: "running install 3"
+    - name: "run transforms.sh_tmp":
       shell: |
         cd ${HOME}/pdsw19-reprod/ansible ;
         ls ;
-        time bash transforms.sh_tmp {{ this_user }} ;
+        time bash transforms.sh_tmp ;
       register: shell_output
     - debug: var=shell_output.stdout_lines
