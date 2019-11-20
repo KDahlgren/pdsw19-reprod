@@ -6,8 +6,9 @@
 if [[ "$HOSTNAME" == "client0"* ]]; then
   echo | sudo apt-add-repository ppa:ansible/ansible ;
   sudo apt-get update ;
-  sudo apt-get install ansible -y ; 
-  sudo apt-get install tmux -y ; 
+  #sudo apt-get install ansible -y ;
+  sudo apt-get install ansible=2.5.1+dfsg-1ubuntu0.1 -y ;
+  sudo apt-get install tmux -y ;
   cd ~ ;
   git clone https://github.com/KDahlgren/skyhook-ansible.git ;
   cd skyhook-ansible ;
