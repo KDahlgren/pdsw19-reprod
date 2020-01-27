@@ -1,0 +1,70 @@
+<rspec xmlns:client="http://www.protogeni.net/resources/rspec/ext/client/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.geni.net/resources/rspec/3" xsi:schemaLocation="http://www.geni.net/resources/rspec/3 http://www.geni.net/resources/rspec/3/manifest.xsd" type="manifest" expires="2019-09-23T07:55:43Z">
+  <node client_id="client0" exclusive="true" component_id="urn:publicid:IDN+wisc.cloudlab.us+node+c220g5-120106" component_manager_id="urn:publicid:IDN+wisc.cloudlab.us+authority+cm" sliver_id="urn:publicid:IDN+wisc.cloudlab.us+sliver+327008">
+    <sliver_type name="raw-pc">
+      <disk_image name="urn:publicid:IDN+wisconsin.cloudlab.us+image+emulab-ops//UBUNTU18-64-STD"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <rs:vnode xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" name="c220g5-120106" hardware_type="c220g5"/>
+    <host name="client0.popper-test3499.skyhook-PG0.wisc.cloudlab.us" ipv4="128.105.144.16"/>
+    <services>
+      <login authentication="ssh-keys" hostname="c220g5-120106.wisc.cloudlab.us" port="22" username="kat"/>
+      <rs:console xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" server="boss.wisc.cloudlab.us"/>
+      <rs:recovery xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" available="true"/>
+    </services>
+  </node>
+  <node client_id="osd0" exclusive="true" component_id="urn:publicid:IDN+wisc.cloudlab.us+node+c220g5-120127" component_manager_id="urn:publicid:IDN+wisc.cloudlab.us+authority+cm" sliver_id="urn:publicid:IDN+wisc.cloudlab.us+sliver+327005">
+    <sliver_type name="raw-pc">
+      <disk_image name="urn:publicid:IDN+wisconsin.cloudlab.us+image+emulab-ops//UBUNTU18-64-STD"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <rs:vnode xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" name="c220g5-120127" hardware_type="c220g5"/>
+    <host name="osd0.popper-test3499.skyhook-PG0.wisc.cloudlab.us" ipv4="128.105.144.37"/>
+    <services>
+      <login authentication="ssh-keys" hostname="c220g5-120127.wisc.cloudlab.us" port="22" username="kat"/>
+      <rs:console xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" server="boss.wisc.cloudlab.us"/>
+      <rs:recovery xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" available="true"/>
+    </services>
+  </node>
+  <node client_id="osd1" exclusive="true" component_id="urn:publicid:IDN+wisc.cloudlab.us+node+c220g5-120117" component_manager_id="urn:publicid:IDN+wisc.cloudlab.us+authority+cm" sliver_id="urn:publicid:IDN+wisc.cloudlab.us+sliver+327009">
+    <sliver_type name="raw-pc">
+      <disk_image name="urn:publicid:IDN+wisconsin.cloudlab.us+image+emulab-ops//UBUNTU18-64-STD"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <rs:vnode xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" name="c220g5-120117" hardware_type="c220g5"/>
+    <host name="osd1.popper-test3499.skyhook-PG0.wisc.cloudlab.us" ipv4="128.105.144.27"/>
+    <services>
+      <login authentication="ssh-keys" hostname="c220g5-120117.wisc.cloudlab.us" port="22" username="kat"/>
+      <rs:console xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" server="boss.wisc.cloudlab.us"/>
+      <rs:recovery xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" available="true"/>
+    </services>
+  </node>
+  <node client_id="osd2" exclusive="true" component_id="urn:publicid:IDN+wisc.cloudlab.us+node+c220g5-120125" component_manager_id="urn:publicid:IDN+wisc.cloudlab.us+authority+cm" sliver_id="urn:publicid:IDN+wisc.cloudlab.us+sliver+327007">
+    <sliver_type name="raw-pc">
+      <disk_image name="urn:publicid:IDN+wisconsin.cloudlab.us+image+emulab-ops//UBUNTU18-64-STD"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <rs:vnode xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" name="c220g5-120125" hardware_type="c220g5"/>
+    <host name="osd2.popper-test3499.skyhook-PG0.wisc.cloudlab.us" ipv4="128.105.144.35"/>
+    <services>
+      <login authentication="ssh-keys" hostname="c220g5-120125.wisc.cloudlab.us" port="22" username="kat"/>
+      <rs:console xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" server="boss.wisc.cloudlab.us"/>
+      <rs:recovery xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" available="true"/>
+    </services>
+  </node>
+  <node client_id="osd3" exclusive="true" component_id="urn:publicid:IDN+wisc.cloudlab.us+node+c220g5-120101" component_manager_id="urn:publicid:IDN+wisc.cloudlab.us+authority+cm" sliver_id="urn:publicid:IDN+wisc.cloudlab.us+sliver+327006">
+    <sliver_type name="raw-pc">
+      <disk_image name="urn:publicid:IDN+wisconsin.cloudlab.us+image+emulab-ops//UBUNTU18-64-STD"/>
+    </sliver_type>
+    <hardware_type name="c220g5"/>
+    <rs:vnode xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" name="c220g5-120101" hardware_type="c220g5"/>
+    <host name="osd3.popper-test3499.skyhook-PG0.wisc.cloudlab.us" ipv4="128.105.144.11"/>
+    <services>
+      <login authentication="ssh-keys" hostname="c220g5-120101.wisc.cloudlab.us" port="22" username="kat"/>
+      <rs:console xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" server="boss.wisc.cloudlab.us"/>
+      <rs:recovery xmlns:rs="http://www.protogeni.net/resources/rspec/ext/emulab/1" available="true"/>
+    </services>
+  </node>
+  <rs:site_info xmlns:rs="http://www.protogeni.net/resources/rspec/ext/site-info/1">
+    <rs:location country="US" latitude="43.0667" longitude="89.4000"/>
+  </rs:site_info>
+</rspec>
